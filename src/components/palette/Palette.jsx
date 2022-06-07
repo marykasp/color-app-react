@@ -1,5 +1,5 @@
 import React from "react";
-import ColorBox from "./ColorBox";
+import ColorBox from "../colorBox/ColorBox";
 import "./palette.css";
 
 function Palette(props) {
