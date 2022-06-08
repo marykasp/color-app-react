@@ -5,15 +5,17 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 function ColorBox(props) {
   // destructure props
   const { background, name } = props;
+  // set state
   const [copied, setCopied] = useState(false);
 
   // event handler changes the copied state
   function changeCopyState() {
+    // change state to true - if true add className show to the overlay div
     setCopied(true);
+    // Wait 1.5s before changing the copied state back to false
     setTimeout(() => {
       setCopied(false);
     }, 1500);
-    console.log(copied);
   }
 
   return (
@@ -23,6 +25,10 @@ function ColorBox(props) {
           className={`copy-overlay ${copied && "show"}`}
           style={{ background: background }}
         ></div>
+        <div className={`copy-message ${copied && "show"}`}>
+          <h1>Copied!</h1>
+          <p>{background}</p>
+        </div>
         <div className="copy-container">
           <div className="box-content">
             <span>{name}</span>
