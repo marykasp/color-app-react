@@ -1,14 +1,8 @@
 .Palette {
-    height: 100vh;
-    background-color: #fff;
+  height: 100vh;
+  /* background-color: #fff; */
 }
 
 .Palette-colors {
-    height: 90%;
-}
-
-.slider {
-    width: 340px;
-    margin: 0 10px;
-    display: inline-block
+  height: 90%;
 }
