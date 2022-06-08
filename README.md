@@ -4,7 +4,7 @@
 ## Todo List:
 - [x] Start project
 - [ ] Create Palette Component
-  - [ ] Top Bar - Navigation Bar
+  - [x] Top Bar - Navigation Bar
     - [ ] DropDown (Material UI)
   - [x] ColorBox - boxes of each color
   - [ ] Footer
@@ -12,7 +12,8 @@
 - [x] Clipboard React Library - clips hex color of ColorBox
 - [x] Animation overlay
 - [x] Generate color shades
-- [] Add color slide to Palette
+  - [x] generatePalette helper function
+- [x] Add color slide to Palette - Slider
 
 ### Create React App
 

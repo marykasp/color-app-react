@@ -5,10 +5,12 @@ import "./palette.css";
 
 function Palette(props) {
   const [level, setLevel] = useState(500);
-  // palette prop is the newPalette returned from generatePalette function - colors is an object whose property is an array of objects - grab a specific property to iterate over that array to create the colorBoxes
+  const [format, setFormat] = useState("hex");
+  // palette prop is the newPalette returned from generatePalette function - colors is an object whose property is an array of objects - grab a specific saturation property to iterate over that array of colors to create the colorBoxes
   const { colors } = props.palette;
   const colorBoxes = colors[level].map((color) => (
-    <ColorBox background={color.hex} name={color.name} />
+    // the background color can be in hex, rgba, rgb color format based on what the user selects from the dropdown menu
+    <ColorBox background={color[format]} name={color.name} />
   ));
 
   // event handler that updates the level state when slider changes
@@ -18,10 +20,20 @@ function Palette(props) {
     setLevel(newLevel);
   }
 
+  // format state is passed up to this function that will change the background of the ColorBox
+  function changeFormat(value) {
+    setFormat(value);
+  }
+
+  console.log(format);
   return (
     <div className="Palette">
       {/* Navbar goes here */}
-      <NavBar level={level} changeLevel={changeLevel} />
+      <NavBar
+        level={level}
+        changeLevel={changeLevel}
+        changeFormat={changeFormat}
+      />
       <div className="Palette-colors">
         {/* Color boxes -iterate over the saturation colors array and generate a colorBox component for each color */}
         {colorBoxes}
