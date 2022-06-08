@@ -12,6 +12,7 @@ function NavBar(props) {
   // event handler for select dropdown -will update the format state
   function handleChange(e) {
     setFormat(e.target.value);
+    // change format passed down from Palette component
     changeFormat(e.target.value);
   }
 

@@ -5,7 +5,7 @@
 - [x] Start project
 - [ ] Create Palette Component
   - [x] Top Bar - Navigation Bar
-    - [ ] DropDown (Material UI)
+    - [x] Select DropDown (Material UI) 
   - [x] ColorBox - boxes of each color
   - [ ] Footer
 - [x] ColorBox Component
@@ -14,6 +14,13 @@
 - [x] Generate color shades
   - [x] generatePalette helper function
 - [x] Add color slide to Palette - Slider
+
+## Libraries:
+- Create React App
+- [Material UI](https://mui.com/)
+- [Chroma JS](https://gka.github.io/chroma.js/)
+- [rc-slider](https://www.npmjs.com/package/rc-slider)
+
 
 ### Create React App
 
