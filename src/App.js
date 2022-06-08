@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       {/* pass in seedColors object properties as props on Palette */}
-      <Palette {...seedColors[0]} />
+      <Palette palette={generatePalette(seedColors[0])} />
     </div>
   );
 }
