@@ -6,12 +6,12 @@
 - [ ] Create Palette Component
   - [ ] Top Bar - Navigation Bar
     - [ ] DropDown (Material UI)
-  - [ ] ColorBox - boxes of each color
+  - [x] ColorBox - boxes of each color
   - [ ] Footer
 - [x] ColorBox Component
 - [x] Clipboard React Library - clips hex color of ColorBox
-- [] Animation overlay
-- [] Generate color shades
+- [x] Animation overlay
+- [x] Generate color shades
 - [] Add color slide to Palette
 
 ### Create React App
