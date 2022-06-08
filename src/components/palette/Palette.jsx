@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import ColorBox from "../colorBox/ColorBox";
 import NavBar from "../navBar/NavBar";
+import Footer from "../footer/Footer";
 import "./palette.css";
 
 function Palette(props) {
   const [level, setLevel] = useState(500);
   const [format, setFormat] = useState("hex");
   // palette prop is the newPalette returned from generatePalette function - colors is an object whose property is an array of objects - grab a specific saturation property to iterate over that array of colors to create the colorBoxes
-  const { colors } = props.palette;
+  const { colors, paletteName, emoji } = props.palette;
   const colorBoxes = colors[level].map((color) => (
     // the background color can be in hex, rgba, rgb color format based on what the user selects from the dropdown menu
-    <ColorBox background={color[format]} name={color.name} />
+    <ColorBox background={color[format]} name={color.name} key={color.id} />
   ));
 
   // event handler that updates the level state when slider changes
@@ -39,6 +40,7 @@ function Palette(props) {
         {colorBoxes}
       </div>
       {/* Footer */}
+      <Footer paletteName={paletteName} emoji={emoji} />
     </div>
   );
 }
