@@ -22,15 +22,31 @@ function Palette(props) {
   return (
     <div className="Palette">
       {/* Navbar goes here */}
-      <Slider
-        defaultValue={level}
-        min={100}
-        max={900}
-        step={100}
-        onAfterChange={changeLevel}
-      />
+      <div className="slider">
+        <Slider
+          defaultValue={level}
+          min={100}
+          max={900}
+          step={100}
+          onAfterChange={changeLevel}
+          trackStyle={{ backgroundColor: "#d5d5d5" }}
+          handleStyle={{
+            backgroundColor: "purple",
+            borderColor: "purple",
+            height: "13px",
+            width: "13px",
+            boxShadow: "none",
+            border: "2px solid purple",
+            outline: "none",
+            marginLeft: "-7px",
+            marginTop: "-4px",
+          }}
+          railStyle={{ height: 8 }}
+        />
+      </div>
+
       <div className="Palette-colors">
-        {/* Color boxes - iterate over the colors property to create a colorbox for each */}
+        {/* Color boxes -iterate over the saturation colors array and generate a colorBox component for each color */}
         {colorBoxes}
       </div>
       {/* Footer */}
