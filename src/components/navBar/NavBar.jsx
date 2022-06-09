@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Slider from "rc-slider";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
@@ -39,7 +40,7 @@ function NavBar(props) {
   return (
     <header className="Navbar">
       <div className="logo">
-        <a href="/">{paletteName}</a>
+        <Link to="/">{paletteName}</Link>
       </div>
       <div className="slider-container">
         <span>
