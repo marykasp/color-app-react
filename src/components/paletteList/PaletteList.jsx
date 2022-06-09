@@ -1,5 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
+import MiniPalette from "../minipalette/MiniPalette";
 import "./palettelist.css";
 
 function PaletteList(props) {
@@ -10,9 +11,7 @@ function PaletteList(props) {
       <h1>React Color Palettes</h1>
       {/* iterate over the palettes array and create jsx element with each palette object properties */}
       {palettes.map((palette) => (
-        <p>
-          <Link to={`palette/${palette.id}`}>{palette.paletteName}</Link>
-        </p>
+        <MiniPalette {...palette} />
       ))}
     </div>
   );
