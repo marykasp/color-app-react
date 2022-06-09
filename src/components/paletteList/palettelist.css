@@ -1,0 +1,30 @@
+.Palette-list {
+  background-color: blue;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.Palette-list .container {
+  width: 50%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.Palette-list .nav {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  color: #fff;
+}
+
+.Palette-list .palettes {
+  box-sizing: border-box;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 30%);
+  grid-gap: 5%;
+}
