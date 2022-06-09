@@ -11,7 +11,7 @@ import "./navbar.css";
 function NavBar(props) {
   const [format, setFormat] = useState("hex");
   const [open, setOpen] = useState(false);
-  const { level, changeLevel, changeFormat } = props;
+  const { level, changeLevel, changeFormat, paletteName } = props;
 
   // event handler for select dropdown -will update the format state
   function handleFormatChange(e) {
@@ -39,10 +39,12 @@ function NavBar(props) {
   return (
     <header className="Navbar">
       <div className="logo">
-        <a href="/">reactcolorpicker</a>
+        <a href="/">{paletteName}</a>
       </div>
       <div className="slider-container">
-        <span>Level: {level}</span>
+        <span>
+          Level: <span className="slider-level">{level}</span>
+        </span>
         <div className="slider">
           <Slider
             defaultValue={level}
@@ -52,12 +54,12 @@ function NavBar(props) {
             onAfterChange={changeLevel}
             trackStyle={{ backgroundColor: "#d5d5d5" }}
             handleStyle={{
-              backgroundColor: "purple",
-              borderColor: "purple",
-              height: "13px",
-              width: "13px",
+              backgroundColor: "#9423a8",
+              borderColor: "#9423a8",
+              height: "14px",
+              width: "14px",
               boxShadow: "none",
-              border: "2px solid purple",
+              border: "2px solid #9423a8",
               outline: "none",
               marginLeft: "-7px",
               marginTop: "-4px",
@@ -67,7 +69,12 @@ function NavBar(props) {
         </div>
       </div>
       <div className="select-container">
-        <Select onChange={handleFormatChange} value={format}>
+        <Select
+          onChange={handleFormatChange}
+          value={format}
+          id="demo-simple-select-filled-label"
+          labelId="demo-simple-select-filled-label"
+        >
           <MenuItem value="hex">HEX - #ffff</MenuItem>
           <MenuItem value="rgb">RGB - rgb(255,255,255)</MenuItem>
           <MenuItem value="rgba">RGBA - rgb(255,255,255,1.0)</MenuItem>

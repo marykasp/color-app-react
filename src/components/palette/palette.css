@@ -2,13 +2,13 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  /* background-color: #fff; */
 }
-
+  
 .Palette-colors {
   height: 90%;
 }
 
+/* FOOTER STYLES */
 .Palette-footer {
   background-color: #fff;
   height: 5vh;

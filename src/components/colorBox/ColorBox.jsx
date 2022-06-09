@@ -4,7 +4,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 
 function ColorBox(props) {
   // destructure props
-  const { background, name } = props;
+  const { background, name, key } = props;
   // set state
   const [copied, setCopied] = useState(false);
 
@@ -20,7 +20,8 @@ function ColorBox(props) {
 
   return (
     <CopyToClipboard text={background} onCopy={changeCopyState}>
-      <div className="ColorBox" style={{ background: background }}>
+      <div className="ColorBox" style={{ background: background }} key={key}>
+        {/* Copied Overlay */}
         <div
           className={`copy-overlay ${copied && "show"}`}
           style={{ background: background }}
@@ -31,7 +32,8 @@ function ColorBox(props) {
         </div>
         <div className="copy-container">
           <div className="box-content">
-            <span>{name}</span>
+            <span>{background}</span>
+            <span className="color-name">{name}</span>
           </div>
           <button className="copy-button">Copy</button>
         </div>

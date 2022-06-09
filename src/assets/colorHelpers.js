@@ -42,7 +42,7 @@ function generatePalette(starterPalette) {
   for (let level of levels) {
     newPalette.colors[level] = [];
   }
-  // loop over every color in the starterPalette
+  // loop over every color object of the colors array
   for (let color of starterPalette.colors) {
     // pass the hex color of the color object to generateScale, returns an array of colors from less saturated to more
     let scale = generateScale(color.color, 10).reverse();
@@ -50,7 +50,7 @@ function generatePalette(starterPalette) {
     for (let i in scale) {
       // use the index of scale to get the key of the colors object - 0 = 50
       newPalette.colors[levels[i]].push({
-        name: `${color.name} ${levels[i]}`,
+        name: `${color.name} - ${levels[i]}`,
         id: color.name.toLowerCase().replace(/ /g, "-"),
         hex: scale[i],
         rgb: chroma(scale[i]).css(),
