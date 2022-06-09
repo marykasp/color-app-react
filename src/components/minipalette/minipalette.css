@@ -1,10 +1,11 @@
 .root {
   background-color: #fff;
   border-radius: 5px;
-  padding: 0.5rem;
+  padding: 1rem;
   position: relative;
   overflow: hidden;
-  border: 1px solid black;
+  border: 2px solid black;
+  height: 220px;
 }
 
 .root:hover {
@@ -12,7 +13,11 @@
 }
 
 .colors {
-  background-color: grey;
+  height: 150px;
+  width: 100%;
+  background-color: #dae1e4;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
 h5.title {
@@ -24,9 +29,19 @@ h5.title {
   padding-top: 0.5rem;
   font-size: 1rem;
   position: relative;
+  width: 100%;
 }
 
 .emoji {
   margin-left: 0.5rem;
   font-size: 1.5rem;
+}
+
+.colors .minicolor {
+  height: 25%;
+  width: 20%;
+  display: inline-block;
+  margin: 0 auto;
+  position: relative;
+  margin-bottom: -6.6px;
 }
