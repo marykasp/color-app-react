@@ -3,17 +3,26 @@
 
 ## Todo List:
 - [x] Start project
-- [ ] Create Palette Component
+- [x] Create Palette Component
   - [x] Top Bar - Navigation Bar
     - [x] Select DropDown (Material UI) 
   - [x] ColorBox - boxes of each color
-  - [ ] Footer
+  - [x] Footer - name of Palette
 - [x] ColorBox Component
 - [x] Clipboard React Library - clips hex color of ColorBox
 - [x] Animation overlay
 - [x] Generate color shades
   - [x] generatePalette helper function
 - [x] Add color slide to Palette - Slider
+- [x] Palette List - seedColors palettes prop
+  - [x] renders miniPalettes - click on to go to specific palette
+  - [x] Minipalettes display palette info and create div box for each color
+- [x] BrowserRouter, Route on App.js to link to Palette List and each Palette
+- [ ] Add link to More button on Palette colorBox
+- [ ] Create Single Color palette component - color with 10 shades
+  - [ ] Navbar for single palette
+  - [ ] Footer for single palette
+  - [ ] Go back button to go back to Palette
 
 ## Libraries:
 - Create React App

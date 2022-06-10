@@ -46,7 +46,7 @@ function generatePalette(starterPalette) {
   for (let color of starterPalette.colors) {
     // pass the hex color of the color object to generateScale, returns an array of colors from less saturated to more
     let scale = generateScale(color.color, 10).reverse();
-    // for each color in scale (10 colors)
+    // for each color in scale (10 colors) use the index to grab the level and push a new object onto the newPalette colors property
     for (let i in scale) {
       // use the index of scale to get the key of the colors object - 0 = 50
       newPalette.colors[levels[i]].push({

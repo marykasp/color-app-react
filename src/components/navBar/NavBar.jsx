@@ -10,13 +10,11 @@ import "rc-slider/assets/index.css";
 import "./navbar.css";
 
 function NavBar(props) {
-  const [format, setFormat] = useState("hex");
   const [open, setOpen] = useState(false);
-  const { level, changeLevel, changeFormat, paletteName } = props;
+  const { format, level, changeLevel, changeFormat, paletteName } = props;
 
-  // event handler for select dropdown -will update the format state
+  // event handler for select dropdown -will update the format state by calling a function on the parent Palette component that sets the parents format state
   function handleFormatChange(e) {
-    setFormat(e.target.value);
     setOpen(true);
     // change format passed down from Palette component
     changeFormat(e.target.value);
@@ -71,6 +69,7 @@ function NavBar(props) {
       </div>
       <div className="select-container">
         <Select
+          // function that calls the Palette event handler that updates the format based on the option value clicked on - child updates the parent's state
           onChange={handleFormatChange}
           value={format}
           id="demo-simple-select-filled-label"
