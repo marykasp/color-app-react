@@ -5,6 +5,12 @@ import "./palettelist.css";
 function PaletteList(props) {
   // passed the array of starter palettes down as a prop
   const { palettes } = props;
+
+  function goToPalette(id) {
+    // route props passed down from App.js in the Route component
+    props.history.push(`/palette/${id}`);
+  }
+
   return (
     <div className="Palette-list">
       <div className="container">
@@ -14,7 +20,7 @@ function PaletteList(props) {
         <div className="palettes">
           {/* iterate over the palettes array and create MiniPalette component with each palette object properties */}
           {palettes.map((palette) => (
-            <MiniPalette {...palette} />
+            <MiniPalette {...palette} handleClick={goToPalette} />
           ))}
         </div>
       </div>

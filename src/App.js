@@ -16,15 +16,19 @@ function App() {
   }
   return (
     <Switch>
-      <Route exact path="/">
-        <PaletteList palettes={seedColors} />
-      </Route>
+      <Route
+        exact
+        path="/"
+        render={(routeProps) => (
+          <PaletteList palettes={seedColors} {...routeProps} />
+        )}
+      />
       <Route
         exact
         path="/palette/:id"
         render={(routeProps) => (
           <Palette
-            // take id from URL, find starterPalette, use that palette to generate a new palette
+            // take id from URL, find starterPalette, use that palette to generate a new palette (all colors have 10 colors of saturation)
             palette={generatePalette(findPalette(routeProps.match.params.id))}
           />
         )}

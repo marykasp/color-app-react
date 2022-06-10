@@ -1,9 +1,8 @@
 import React from "react";
 import "./minipalette.css";
-import { Link } from "react-router-dom";
 
 function MiniPalette(props) {
-  const { id, paletteName, colors, emoji } = props;
+  const { id, paletteName, colors, emoji, handleClick } = props;
   // create mini color boxes for each of the colors on the palette - colors is an array of objects -pass in object to callback function use color property to style the background color of the div
   const miniColorBoxes = colors.map((color) => (
     <div
@@ -13,16 +12,14 @@ function MiniPalette(props) {
     ></div>
   ));
   return (
-    <div className="root">
+    <div className="root" onClick={() => handleClick(id)}>
       <div className="colors">
         {/* add mini color boxes here */}
         {miniColorBoxes}
       </div>
-      <Link to={`palette/${id}`}>
-        <h5 className="title">
-          {paletteName} <span className="emoji">{emoji}</span>
-        </h5>
-      </Link>
+      <h5 className="title">
+        {paletteName} <span className="emoji">{emoji}</span>
+      </h5>
     </div>
   );
 }
