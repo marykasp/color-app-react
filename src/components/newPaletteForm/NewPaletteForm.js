@@ -13,7 +13,8 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import Button from "@mui/material/Button";
 import { ChromePicker } from "react-color";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-import DraggableColorBox from "../draggableColorBox/DraggableColorBox";
+import DraggableColorList from "../draggableColorList/DraggableColorList";
+import { arrayMove } from "react-sortable-hoc";
 
 const drawerWidth = 400;
 
@@ -103,6 +104,10 @@ function NewPaletteForm(props) {
 
   function updateCurrentColor(newColor) {
     setCurrentColor(newColor.hex);
+  }
+
+  function onSortEnd({ oldIndex, newIndex }) {
+    setColors(arrayMove(colors, oldIndex, newIndex));
   }
 
   // add color clicked on to colors array - when click add color button, will add the current color to the colors array - color added is an object with two properties color and name
@@ -226,15 +231,12 @@ function NewPaletteForm(props) {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-
-        {colors.map((color) => (
-          <DraggableColorBox
-            key={color.name}
-            color={color.color}
-            name={color.name}
-            handleClick={() => deleteColor(color.name)}
-          />
-        ))}
+        <DraggableColorList
+          colors={colors}
+          deleteColor={deleteColor}
+          axis="xy"
+          onSortEnd={onSortEnd}
+        />
       </Main>
     </Box>
   );

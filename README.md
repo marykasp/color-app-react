@@ -40,6 +40,8 @@
   - [x] Add palette name form input
   - [x] Add color name and delete icon to draggable color box
   - [x] Add delete to draggable color box
+  - [x] React sortable library - to drag and drop color boxes
+  - [x] Draggable list that displays the draggable color boxes
 
 ## Libraries:
 
@@ -51,12 +53,13 @@
 - [rc-slider](https://www.npmjs.com/package/rc-slider)
 - [React Color](https://casesandberg.github.io/react-color/#about)
 - [Form Validator](https://www.npmjs.com/package/react-material-ui-form-validator)
+- [React Sortable](https://www.npmjs.com/package/react-sortable-hoc)
 
 ## 🎨 About
 
-This is a project I worked on while learning [React](https://reactjs.org). This is a clone of websites like Flat UI Colors and Material UI Colors.
+This is a large project I worked on while learning [React](https://reactjs.org). This is a clone of websites like **Flat UI Colors** and **Material UI Colors**.
 
-I learned a lot while coding this project. I ended up using React Hooks and not class components. Still need to refractor the CSS to use JSS to clean up the code. I also learned how to deal with Draggable boxes and how to properly move them.
+I learned a lot while coding this project. I ended up using React Hooks Still need to refractor the CSS to use JSS to clean up the code. I also learned how to deal with Draggable boxes and how to properly move them by using React Sortable library.
 
 [Material UI] was used for Icons. ChromaJS was used to get the scale for each color box and to retrieve the Luminance to make the text more visible on each box. Emoji Picker was used so the user can select an emoji when they are creating their own Color Palette.
 
