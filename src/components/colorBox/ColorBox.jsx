@@ -5,7 +5,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 
 function ColorBox(props) {
   // destructure props
-  const { background, name, key, moreUrl } = props;
+  const { background, name, key, moreUrl, showLink } = props;
   // set state
   const [copied, setCopied] = useState(false);
 
@@ -38,9 +38,11 @@ function ColorBox(props) {
           </div>
           <button className="copy-button">Copy</button>
         </div>
-        <Link to={moreUrl} onClick={(e) => e.stopPropagation}>
-          <span className="see-more">More</span>
-        </Link>
+        {showLink && (
+          <Link to={moreUrl} onClick={(e) => e.stopPropagation}>
+            <span className="see-more">More</span>
+          </Link>
+        )}
       </div>
     </CopyToClipboard>
   );
