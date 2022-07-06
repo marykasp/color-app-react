@@ -1,11 +1,13 @@
 # Colors App
+
 - Similar to sites like [Material UI Colors](http://materialuicolors.co/?utm_source=launchers)
 
 ## Todo List:
+
 - [x] Start project
 - [x] Create Palette Component
   - [x] Top Bar - Navigation Bar
-    - [x] Select DropDown (Material UI) 
+    - [x] Select DropDown (Material UI)
   - [x] ColorBox - boxes of each color
   - [x] Footer - name of Palette
 - [x] ColorBox Component
@@ -18,18 +20,19 @@
   - [x] renders miniPalettes - click on to go to specific palette
   - [x] Minipalettes display palette info and create div box for each color
 - [x] BrowserRouter, Route on App.js to link to Palette List and each Palette
-- [ ] Add link to More button on Palette colorBox
+- [x] Add link to More button on Palette colorBox
 - [ ] Create Single Color palette component - color with 10 shades
-  - [ ] Navbar for single palette
-  - [ ] Footer for single palette
+  - [x] Navbar for single palette
+  - [x] Footer for single palette
   - [ ] Go back button to go back to Palette
+  - [ ] Style single color palette boxes
 
 ## Libraries:
+
 - Create React App
 - [Material UI](https://mui.com/)
 - [Chroma JS](https://gka.github.io/chroma.js/)
 - [rc-slider](https://www.npmjs.com/package/rc-slider)
-
 
 ### Create React App
 
