@@ -18,11 +18,16 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
+  align-items: "center";
   color: #fff;
   margin-bottom: 1rem;
   margin-top: 1rem;
 }
 
+.Palette-list .nav a {
+  text-decoration: none;
+  color: #fff;
+}
 
 .Palette-list .palettes {
   box-sizing: border-box;

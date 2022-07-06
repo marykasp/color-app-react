@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import MiniPalette from "../minipalette/MiniPalette";
 import "./palettelist.css";
 
@@ -16,6 +17,7 @@ function PaletteList(props) {
       <div className="container">
         <nav className="nav">
           <h1>React Color Palettes</h1>
+          <Link to="/palette/new">Create Palette</Link>
         </nav>
         <div className="palettes">
           {/* iterate over the palettes array and create MiniPalette component with each palette object properties */}
