@@ -32,7 +32,8 @@
   - [x] Slide out drawer - Material UI persistant drawer
   - [x] Color picker component - Chrome Picker
   - [x] Connect add color button to chromepicker
-  - [ ] Creat Draggable Color box component
+  - [x] Creat Draggable Color box component
+  - [x] Form Input Validator - validate color and color name
 
 ## Libraries:
 
@@ -43,6 +44,7 @@
 - [Chroma JS](https://gka.github.io/chroma.js/)
 - [rc-slider](https://www.npmjs.com/package/rc-slider)
 - [React Color](https://casesandberg.github.io/react-color/#about)
+- [Form Validator](https://www.npmjs.com/package/react-material-ui-form-validator)
 
 ## 🎨 About
 

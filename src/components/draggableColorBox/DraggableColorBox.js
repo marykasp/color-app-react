@@ -5,6 +5,7 @@ function DraggableColorBox(props) {
   return (
     <div className="draggablebox" style={{ backgroundColor: props.color }}>
       {props.color}
+      {props.name}
     </div>
   );
 }
