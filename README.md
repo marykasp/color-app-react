@@ -37,6 +37,9 @@
 - [ ] Saving new palettes
   - [x] Add save palette button and save new palette
   - [x] Save palette to palette list, redirect to Palette page
+  - [x] Add palette name form input
+  - [x] Add color name and delete icon to draggable color box
+  - [x] Add delete to draggable color box
 
 ## Libraries:
 

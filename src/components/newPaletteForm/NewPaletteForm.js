@@ -131,6 +131,12 @@ function NewPaletteForm(props) {
     props.history.push("/");
   }
 
+  function deleteColor(colorName) {
+    // iterate over the colors array of objects and check if color name property is not equal to the colorName argument - if not will be saved to new array thereby removing the color object with that colorName only
+    const filteredColors = colors.filter((color) => color.name !== colorName);
+    setColors(filteredColors);
+  }
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -222,7 +228,12 @@ function NewPaletteForm(props) {
         <DrawerHeader />
 
         {colors.map((color) => (
-          <DraggableColorBox color={color.color} name={color.name} />
+          <DraggableColorBox
+            key={color.name}
+            color={color.color}
+            name={color.name}
+            handleClick={() => deleteColor(color.name)}
+          />
         ))}
       </Main>
     </Box>
