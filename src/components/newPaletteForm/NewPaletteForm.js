@@ -63,11 +63,15 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
-function NewPaletteForm() {
+function NewPaletteForm(props) {
+  const { palettes, savePalette } = props;
   const [open, setOpen] = useState(false);
   const [currentColor, setCurrentColor] = useState("");
   const [colors, setColors] = useState([{ color: "blue", name: "blue" }]);
-  const [newName, setNewName] = useState("");
+  const [name, setName] = useState({
+    colorName: "",
+    paletteName: "",
+  });
 
   // component did mount
   useEffect(() => {
@@ -79,6 +83,13 @@ function NewPaletteForm() {
 
     ValidatorForm.addValidationRule("isColorUnique", (value) => {
       return colors.every(({ color }) => color !== currentColor);
+    });
+
+    // Form validator for palette name input
+    ValidatorForm.addValidationRule("isPaletteNameUnique", (value) => {
+      return palettes.every(
+        ({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase()
+      );
     });
   });
 
@@ -96,20 +107,34 @@ function NewPaletteForm() {
 
   // add color clicked on to colors array - when click add color button, will add the current color to the colors array - color added is an object with two properties color and name
   function addNewColor() {
-    const newColor = { color: currentColor, name: newName };
+    const newColor = { color: currentColor, name: name.colorName };
     setColors((prevColors) => [...prevColors, newColor]);
     // reset the input field
-    setNewName("");
+    setName({ ...name, colorName: "" });
   }
 
+  // changes the name state with the values from the color and palette name input
   function handleChange(e) {
-    setNewName(e.target.value);
+    // handles color name or palette name changes
+    setName({ ...name, [e.target.name]: e.target.value });
+  }
+
+  // colors is an array of objects with the hex color and the made up color name
+  function handleSubmit() {
+    const newPalette = {
+      paletteName: name.paletteName,
+      id: name.paletteName.toLowerCase().replace(/ /g, "-"),
+      colors: colors,
+    };
+    savePalette(newPalette);
+    // redirect to home page after creating new palette
+    props.history.push("/");
   }
 
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar position="fixed" open={open} color="default">
         <Toolbar>
           <IconButton
             color="inherit"
@@ -123,6 +148,19 @@ function NewPaletteForm() {
           <Typography variant="h6" noWrap component="div">
             Color Picker
           </Typography>
+          <ValidatorForm onSubmit={handleSubmit}>
+            <TextValidator
+              value={name.paletteName}
+              label="Palette Name"
+              name="paletteName"
+              onChange={handleChange}
+              validators={["required", "isPaletteNameUnique"]}
+              errorMessages={["Enter Palette Name", "Name already used"]}
+            />
+            <Button variant="contained" color="primary" type="submit">
+              Save Palette
+            </Button>
+          </ValidatorForm>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -160,7 +198,8 @@ function NewPaletteForm() {
         />
         <ValidatorForm onSubmit={addNewColor}>
           <TextValidator
-            value={newName}
+            value={name.colorName}
+            name="colorName"
             onChange={handleChange}
             validators={["required", "isColorNameUnique", "isColorUnique"]}
             errorMessages={[

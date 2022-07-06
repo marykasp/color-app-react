@@ -27,13 +27,16 @@
   - [x] Go back button to go back to Palette
   - [x] Style single color palette boxes (inherits from Palette and ColorBox css)
   - [x] Change text color based on color luminance (chromaJS)
-- [ ] Palette Form
+- [x] Palette Form
   - [x] Link to New Palette From on PaletteList component
   - [x] Slide out drawer - Material UI persistant drawer
   - [x] Color picker component - Chrome Picker
   - [x] Connect add color button to chromepicker
   - [x] Creat Draggable Color box component
   - [x] Form Input Validator - validate color and color name
+- [ ] Saving new palettes
+  - [x] Add save palette button and save new palette
+  - [x] Save palette to palette list, redirect to Palette page
 
 ## Libraries:
 
