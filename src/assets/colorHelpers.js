@@ -38,7 +38,7 @@ function generatePalette(starterPalette) {
     colors: {},
   };
 
-  // loop over all the levels and add key-value pair to colors property (object where keys are the saturation levels that point to arrays)
+  // loop over all the levels and add key-value pair to colors property (object where keys are the saturation levels that point to arrays of colors)
   for (let level of levels) {
     newPalette.colors[level] = [];
   }
@@ -48,7 +48,7 @@ function generatePalette(starterPalette) {
     let scale = generateScale(color.color, 10).reverse();
     // for each color in scale (10 colors) use the index to grab the level and push a new object onto the newPalette colors property
     for (let i in scale) {
-      // use the index of scale to get the key of the colors object - 0 = 50
+      // use the index of scale to get the key for the colors object - 0 = 50
       newPalette.colors[levels[i]].push({
         name: `${color.name} - ${levels[i]}`,
         id: color.name.toLowerCase().replace(/ /g, "-"),
@@ -70,7 +70,7 @@ function getRange(hexColor) {
   return [chroma(hexColor).darken(1.4).hex(), hexColor, endColor];
 }
 
-// returns 10 colors based on input color
+// returns 10 colors based on input color - array of colors of the same color with different saturation/shades
 function generateScale(hexColor, numberOfColors) {
   // pass returned array of calling getRange to chroma.scale()
   return chroma.scale(getRange(hexColor)).mode("lab").colors(numberOfColors);
