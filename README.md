@@ -2,7 +2,7 @@
 
 - Similar to sites like [Material UI Colors](http://materialuicolors.co/?utm_source=launchers)
 
-## Todo List:
+## Project Todo List:
 
 - [x] Start project
 - [x] Create Palette Component
@@ -29,8 +29,10 @@
   - [x] Change text color based on color luminance (chromaJS)
 - [ ] Palette Form
   - [x] Link to New Palette From on PaletteList component
-  - [ ] Slide out drawer
-  - [ ] Color picker component
+  - [x] Slide out drawer - Material UI persistant drawer
+  - [x] Color picker component - Chrome Picker
+  - [x] Connect add color button to chromepicker
+  - [ ] Creat Draggable Color box component
 
 ## Libraries:
 
@@ -40,6 +42,7 @@
 - [Material UI](https://mui.com/)
 - [Chroma JS](https://gka.github.io/chroma.js/)
 - [rc-slider](https://www.npmjs.com/package/rc-slider)
+- [React Color](https://casesandberg.github.io/react-color/#about)
 
 ## 🎨 About
 
