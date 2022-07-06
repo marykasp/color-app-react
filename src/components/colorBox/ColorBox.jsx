@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./colorbox.css";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import chroma from "chroma-js";
+import "./colorbox.css";
 
 function ColorBox(props) {
   // destructure props
