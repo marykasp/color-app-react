@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import ColorBox from "../colorBox/ColorBox";
+import NavBar from "../navBar/NavBar";
+import Footer from "../footer/Footer";
 
 function SingleColorPalette(props) {
   const { colorId, palette } = props;
   let shades = gatherShades(palette, colorId);
+  const [format, setFormat] = useState("hex");
 
   function gatherShades(palette, colorToFilterBy) {
     // return all shades of given color (based on saturation level)
@@ -20,19 +23,31 @@ function SingleColorPalette(props) {
     return shades.slice(1);
   }
 
+  // format state is passed up to this function that will change the background of the ColorBox
+  function changeFormat(value) {
+    setFormat(value);
+  }
+
   const colorBoxes = shades.map((color) => (
     <ColorBox
       key={color.id}
       name={color.name}
-      background={color.hex}
+      background={color[format]}
       showLink={false}
     />
   ));
 
   return (
     <div className="Palette">
-      <h1>Single Color Palette</h1>
+      <NavBar
+        format={format}
+        changeFormat={changeFormat}
+        paletteName={palette.paletteName}
+        showingAllColors={false}
+      />
+
       <div className="Palette-colors">{colorBoxes}</div>
+      <Footer paletteName={palette.paletteName} emoji={palette.emoji} />
     </div>
   );
 }

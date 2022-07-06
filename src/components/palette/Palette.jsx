@@ -42,6 +42,7 @@ function Palette(props) {
         changeFormat={changeFormat}
         paletteName={paletteName}
         format={format}
+        showingAllColors={true}
       />
       <div className="Palette-colors">
         {/* Color boxes -iterate over the saturation colors array and generate a colorBox component for each color */}

@@ -11,7 +11,14 @@ import "./navbar.css";
 
 function NavBar(props) {
   const [open, setOpen] = useState(false);
-  const { format, level, changeLevel, changeFormat, paletteName } = props;
+  const {
+    format,
+    level,
+    changeLevel,
+    changeFormat,
+    paletteName,
+    showingAllColors,
+  } = props;
 
   // event handler for select dropdown -will update the format state by calling a function on the parent Palette component that sets the parents format state
   function handleFormatChange(e) {
@@ -40,33 +47,35 @@ function NavBar(props) {
       <div className="logo">
         <Link to="/">{paletteName}</Link>
       </div>
-      <div className="slider-container">
-        <span>
-          Level: <span className="slider-level">{level}</span>
-        </span>
-        <div className="slider">
-          <Slider
-            defaultValue={level}
-            min={100}
-            max={900}
-            step={100}
-            onAfterChange={changeLevel}
-            trackStyle={{ backgroundColor: "#d5d5d5" }}
-            handleStyle={{
-              backgroundColor: "#9423a8",
-              borderColor: "#9423a8",
-              height: "14px",
-              width: "14px",
-              boxShadow: "none",
-              border: "2px solid #9423a8",
-              outline: "none",
-              marginLeft: "-7px",
-              marginTop: "-4px",
-            }}
-            railStyle={{ height: 8 }}
-          />
+      {showingAllColors && (
+        <div className="slider-container">
+          <span>
+            Level: <span className="slider-level">{level}</span>
+          </span>
+          <div className="slider">
+            <Slider
+              defaultValue={level}
+              min={100}
+              max={900}
+              step={100}
+              onAfterChange={changeLevel}
+              trackStyle={{ backgroundColor: "#d5d5d5" }}
+              handleStyle={{
+                backgroundColor: "#9423a8",
+                borderColor: "#9423a8",
+                height: "14px",
+                width: "14px",
+                boxShadow: "none",
+                border: "2px solid #9423a8",
+                outline: "none",
+                marginLeft: "-7px",
+                marginTop: "-4px",
+              }}
+              railStyle={{ height: 8 }}
+            />
+          </div>
         </div>
-      </div>
+      )}
       <div className="select-container">
         <Select
           // function that calls the Palette event handler that updates the format based on the option value clicked on - child updates the parent's state
