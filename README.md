@@ -41,7 +41,7 @@
 - [Chroma JS](https://gka.github.io/chroma.js/)
 - [rc-slider](https://www.npmjs.com/package/rc-slider)
 
-##🎨 About
+## 🎨 About
 
 This is a project I worked on while learning [React](https://reactjs.org). This is a clone of websites like Flat UI Colors and Material UI Colors.
 
