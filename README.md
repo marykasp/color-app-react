@@ -28,8 +28,9 @@
   - [x] Style single color palette boxes (inherits from Palette and ColorBox css)
   - [x] Change text color based on color luminance (chromaJS)
 - [ ] Palette Form
-  - [] Slide out drawer
-  - [] Color picker component
+  - [x] Link to New Palette From on PaletteList component
+  - [ ] Slide out drawer
+  - [ ] Color picker component
 
 ## Libraries:
 
