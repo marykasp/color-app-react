@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./colorbox.css";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import chroma from "chroma-js";
 
 function ColorBox(props) {
   // destructure props
   const { background, name, key, moreUrl, showLink } = props;
   // set state
   const [copied, setCopied] = useState(false);
+  // use this variable - stores a boolean value to determin which color the text on the color boxes should be
+  const isDarkColor = chroma(background).luminance() <= 0.06;
+  const isLightColor = chroma(background).luminance() >= 0.6;
 
   // event handler changes the copied state
   function changeCopyState() {
@@ -29,18 +33,22 @@ function ColorBox(props) {
         ></div>
         <div className={`copy-message ${copied && "show"}`}>
           <h1>Copied!</h1>
-          <p>{background}</p>
+          <p className={isLightColor && "dark-text"}>{background}</p>
         </div>
         <div className="copy-container">
           <div className="box-content">
-            <span>{background}</span>
-            <span className="color-name">{name}</span>
+            <span className={isDarkColor && "light-text"}>{background}</span>
+            <span className={isDarkColor && "light-text"}>{name}</span>
           </div>
-          <button className="copy-button">Copy</button>
+          <button className={`copy-button ${isLightColor && "dark-text"}`}>
+            Copy
+          </button>
         </div>
         {showLink && (
           <Link to={moreUrl} onClick={(e) => e.stopPropagation}>
-            <span className="see-more">More</span>
+            <span className={`see-more ${isLightColor && "dark-text"}`}>
+              More
+            </span>
           </Link>
         )}
       </div>
