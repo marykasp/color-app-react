@@ -8,7 +8,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 
 function PaletteMetaForm({ names, palettes, handleChange, handleSubmit }) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   // component did mount
   useEffect(() => {
@@ -30,19 +30,20 @@ function PaletteMetaForm({ names, palettes, handleChange, handleSubmit }) {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Open form dialog
-      </Button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Subscribe</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            To subscribe to this website, please enter your email address here.
-            We will send updates occasionally.
-          </DialogContentText>
-          <ValidatorForm onSubmit={handleSubmit}>
+        <DialogTitle>Choose a PaletteName</DialogTitle>
+        <ValidatorForm onSubmit={handleSubmit}>
+          <DialogContent>
+            <DialogContentText>
+              Please enter a name for your new beautiful palette. Make sure name
+              is unique!
+            </DialogContentText>
+
             <TextValidator
               value={names.paletteName}
+              fullWidth
+              variant="filled"
+              margin="normal"
               label="Palette Name"
               name="paletteName"
               onChange={handleChange}
@@ -50,6 +51,9 @@ function PaletteMetaForm({ names, palettes, handleChange, handleSubmit }) {
               errorMessages={["Enter Palette Name", "Name already used"]}
               sx={{ mr: 2 }}
             />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose}>Cancel</Button>
             <Button
               variant="contained"
               color="primary"
@@ -61,12 +65,8 @@ function PaletteMetaForm({ names, palettes, handleChange, handleSubmit }) {
             >
               Save Palette
             </Button>
-          </ValidatorForm>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Subscribe</Button>
-        </DialogActions>
+          </DialogActions>
+        </ValidatorForm>
       </Dialog>
     </div>
   );

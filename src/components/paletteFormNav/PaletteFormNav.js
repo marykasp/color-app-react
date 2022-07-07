@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import PaletteMetaForm from "../paletteMetaForm/PaletteMetaForm";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -18,6 +18,11 @@ function PaletteFormNav({
   handleSubmit,
 }) {
   const classes = useStyles();
+  const [formShowing, setFormShowing] = useState(false);
+
+  function showForm() {
+    setFormShowing(true);
+  }
 
   return (
     <div>
@@ -38,19 +43,24 @@ function PaletteFormNav({
           </Typography>
         </Toolbar>
         <div className={classes.navBtns}>
-          <PaletteMetaForm
-            names={names}
-            handleChange={handleChange}
-            handleSubmit={handleSubmit}
-            palettes={palettes}
-          />
+          <Button variant="contained" onClick={showForm}>
+            Save Palette
+          </Button>
           <Link to="/">
-            <Button variant="contained" color="secondary">
+            <Button variant="contained" color="secondary" sx={{ margin: 1 }}>
               Go Back
             </Button>
           </Link>
         </div>
       </AppBar>
+      {formShowing && (
+        <PaletteMetaForm
+          names={names}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+          palettes={palettes}
+        />
+      )}
     </div>
   );
 }

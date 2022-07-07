@@ -49,10 +49,12 @@
 - [x] Styling color picker and Navigation - React JSS
 - [ ] Modals and Dialogs
 
-  - [ Style Dialog
-  - [ ] Closing form and adding emoji
+  - [x] Import Material Dialog
+  - [x] Style Dialog
+  - [x] Closing form and adding emoji
 
 - [ ] Convert CSS to styled components or JSS
+- [ ] Find another library to do a draggable box - arrayMove
 
 ## Libraries:
 
