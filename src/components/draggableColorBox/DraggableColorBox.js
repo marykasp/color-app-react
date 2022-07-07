@@ -2,10 +2,6 @@ import React from "react";
 // import chroma from "chroma-js";
 import "./draggablecolorbox.css";
 import DeleteIcon from "@mui/icons-material/Delete";
-<<<<<<< HEAD
-=======
-// import { SortableElement } from "react-sortable-hoc";
->>>>>>> f2d7abcfeb102d9ca5072518f65255aee52a4546
 
 function DraggableColorBox(props) {
   const { color, name, handleClick } = props;
