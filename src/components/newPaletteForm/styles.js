@@ -42,7 +42,4 @@ export const useStyles = createUseStyles({
     justifyContent: "center",
     alignItems: "center",
   },
-  button: {
-    marginLeft: "3px",
-  },
 });

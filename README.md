@@ -44,9 +44,9 @@
   - [x] React sortable library - to drag and drop color boxes
   - [x] Draggable list that displays the draggable color boxes
 - [x] Clear Palette and Random Color Button
-- [ ] New Palette Navigation - extract to new component
-- [ ] Extract color picker component - (drawer)
-- [ ] Styling color picker and Navigation
+- [x] New Palette Navigation - extract to new component
+- [x] Extract color picker component - (drawer)
+- [x] Styling color picker and Navigation - React JSS
 - [ ] Modals and Dialogs
 
   - [ Style Dialog
