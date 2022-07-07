@@ -4,7 +4,7 @@ import { DRAWER_WIDTH } from "../../assets/constants";
 
 const drawerWidth = DRAWER_WIDTH;
 
-const AppBar = styled(MuiAppBar, {
+export const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
 })(({ theme, open }) => ({
   transition: theme.transitions.create(["margin", "width"], {
@@ -19,6 +19,16 @@ const AppBar = styled(MuiAppBar, {
       duration: theme.transitions.duration.enteringScreen,
     }),
   }),
+  flexDirection: "row",
+  justifyContent: "space-between",
+  height: "64px",
 }));
 
-export default AppBar;
+export const classes = (theme) => ({
+  root: {
+    display: "flex",
+  },
+  navBtns: {
+    marginRight: "50px",
+  },
+});

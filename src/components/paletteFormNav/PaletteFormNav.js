@@ -7,7 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Button from "@mui/material/Button";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-import AppBar from "./styles";
+import { AppBar, classes } from "./styles";
 
 function PaletteFormNav({
   open,
@@ -28,7 +28,7 @@ function PaletteFormNav({
   });
 
   return (
-    <div>
+    <div className={classes.root}>
       <CssBaseline />
       <AppBar position="fixed" open={open} color="default">
         <Toolbar>
@@ -42,8 +42,10 @@ function PaletteFormNav({
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Color Picker
+            Create A Palette
           </Typography>
+        </Toolbar>
+        <div className={classes.navBtns}>
           <ValidatorForm onSubmit={handleSubmit}>
             <TextValidator
               value={name.paletteName}
@@ -56,13 +58,13 @@ function PaletteFormNav({
             <Button variant="contained" color="primary" type="submit">
               Save Palette
             </Button>
-            <Link to="/">
-              <Button variant="contained" color="secondary">
-                Go Back
-              </Button>
-            </Link>
           </ValidatorForm>
-        </Toolbar>
+          <Link to="/">
+            <Button variant="contained" color="secondary">
+              Go Back
+            </Button>
+          </Link>
+        </div>
       </AppBar>
     </div>
   );

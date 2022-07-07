@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { styled } from "@mui/material/styles";
+import React, { useState } from "react";
 import PaletteFormNav from "../paletteFormNav/PaletteFormNav";
+import ColorPickerForm from "../colorPickerForm/ColorPickerForm";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import Typography from "@mui/material/Typography";
@@ -8,67 +8,22 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import Button from "@mui/material/Button";
-import { ChromePicker } from "react-color";
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import DraggableColorList from "../draggableColorList/DraggableColorList";
-import { arrayMoveImmutable } from "array-move";
+// import { arrayMoveImmutable } from "array-move";
+import { arrayMove } from "react-sortable-hoc";
 import { DRAWER_WIDTH } from "../../assets/constants";
-
-const drawerWidth = DRAWER_WIDTH;
-
-const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
-  ({ theme, open }) => ({
-    flexGrow: 1,
-    height: "calc(100vh - 60px)",
-    padding: theme.spacing(3),
-    transition: theme.transitions.create("margin", {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginLeft: `-${drawerWidth}px`,
-    ...(open && {
-      transition: theme.transitions.create("margin", {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      marginLeft: 0,
-    }),
-  })
-);
-
-const DrawerHeader = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
-  ...theme.mixins.toolbar,
-  justifyContent: "flex-end",
-}));
+import { Main, DrawerHeader } from "./styles.js";
 
 function NewPaletteForm(props) {
   const { palettes, savePalette, maxColors } = props;
 
   const [open, setOpen] = useState(false);
-  const [currentColor, setCurrentColor] = useState("");
   const [colors, setColors] = useState(palettes[0].colors);
   const [name, setName] = useState({
     colorName: "",
     paletteName: "",
   });
   let isPaletteFull = colors.length >= maxColors;
-
-  // component did mount
-  useEffect(() => {
-    ValidatorForm.addValidationRule("isColorNameUnique", (value) => {
-      return colors.every(
-        ({ name }) => name.toLowerCase() !== value.toLowerCase()
-      );
-    });
-
-    ValidatorForm.addValidationRule("isColorUnique", (value) => {
-      return colors.every(({ color }) => color !== currentColor);
-    });
-  });
 
   function handleDrawerOpen() {
     setOpen(true);
@@ -78,21 +33,9 @@ function NewPaletteForm(props) {
     setOpen(false);
   }
 
-  function updateCurrentColor(newColor) {
-    setCurrentColor(newColor.hex);
-  }
-
   function onSortEnd({ oldIndex, newIndex }) {
     // array move returns a new array with the colors in their new index position
-    setColors(arrayMoveImmutable(colors, oldIndex, newIndex));
-  }
-
-  // add color clicked on to colors array - when click add color button, will add the current color to the colors array - color added is an object with two properties color and name
-  function addNewColor() {
-    const newColor = { color: currentColor, name: name.colorName };
-    setColors((prevColors) => [...prevColors, newColor]);
-    // reset the input field
-    setName({ ...name, colorName: "" });
+    setColors(arrayMove(colors, oldIndex, newIndex));
   }
 
   // changes the name state with the values from the color and palette name input
@@ -138,17 +81,17 @@ function NewPaletteForm(props) {
         open={open}
         name={name}
         palettes={palettes}
-        drawerWidth={drawerWidth}
+        drawerWidth={DRAWER_WIDTH}
         handleDrawerOpen={handleDrawerOpen}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
       />
       <Drawer
         sx={{
-          width: drawerWidth,
+          width: DRAWER_WIDTH,
           flexShrink: 0,
           "& .MuiDrawer-paper": {
-            width: drawerWidth,
+            width: DRAWER_WIDTH,
             boxSizing: "border-box",
           },
         }}
@@ -176,35 +119,14 @@ function NewPaletteForm(props) {
             Random Color
           </Button>
         </div>
-
-        <ChromePicker
-          color={currentColor}
-          onChangeComplete={(newColor) => updateCurrentColor(newColor)}
+        <ColorPickerForm
+          name={name}
+          colors={colors}
+          setName={setName}
+          setColors={setColors}
+          handleChange={handleChange}
+          isPaletteFull={isPaletteFull}
         />
-        <ValidatorForm onSubmit={addNewColor}>
-          <TextValidator
-            value={name.colorName}
-            name="colorName"
-            onChange={handleChange}
-            validators={["required", "isColorNameUnique", "isColorUnique"]}
-            errorMessages={[
-              "enter a color name",
-              "color name must be unique",
-              "color already used",
-            ]}
-          />
-          <Button
-            variant="contained"
-            color="primary"
-            type="submit"
-            disabled={isPaletteFull}
-            style={{
-              backgroundColor: isPaletteFull ? "gray" : currentColor,
-            }}
-          >
-            {isPaletteFull ? "Palette Full" : "Add Color"}
-          </Button>
-        </ValidatorForm>
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
