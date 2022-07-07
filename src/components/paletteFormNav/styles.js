@@ -30,6 +30,7 @@ export const useStyles = createUseStyles({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
+    marginRight: "1rem",
   },
   flexBox: {
     display: "flex",

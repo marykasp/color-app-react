@@ -20,7 +20,7 @@ function NewPaletteForm(props) {
 
   const [open, setOpen] = useState(false);
   const [colors, setColors] = useState(palettes[0].colors);
-  const [name, setName] = useState({
+  const [names, setNames] = useState({
     colorName: "",
     paletteName: "",
   });
@@ -41,14 +41,14 @@ function NewPaletteForm(props) {
   // changes the name state with the values from the color and palette name input
   function handleChange(e) {
     // handles color name or palette name changes
-    setName({ ...name, [e.target.name]: e.target.value });
+    setNames({ ...names, [e.target.name]: e.target.value });
   }
 
   // colors is an array of objects with the hex color and the made up color name
   function handleSubmit() {
     const newPalette = {
-      paletteName: name.paletteName,
-      id: name.paletteName.toLowerCase().replace(/ /g, "-"),
+      paletteName: names.paletteName,
+      id: names.paletteName.toLowerCase().replace(/ /g, "-"),
       colors: colors,
     };
     savePalette(newPalette);
@@ -79,7 +79,7 @@ function NewPaletteForm(props) {
     <Box sx={{ display: "flex" }}>
       <PaletteFormNav
         open={open}
-        name={name}
+        names={names}
         palettes={palettes}
         drawerWidth={DRAWER_WIDTH}
         handleDrawerOpen={handleDrawerOpen}
@@ -110,12 +110,7 @@ function NewPaletteForm(props) {
             Design Your Palette
           </Typography>
           <div className={classes.buttons}>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={clearColors}
-              classeName={classes.button}
-            >
+            <Button variant="contained" color="secondary" onClick={clearColors}>
               Clear Palette
             </Button>
             <Button
@@ -123,15 +118,15 @@ function NewPaletteForm(props) {
               color="primary"
               onClick={randomColor}
               disabled={isPaletteFull}
-              className={classes.button}
+              sx={{ ml: 1 }}
             >
               Random Color
             </Button>
           </div>
           <ColorPickerForm
-            name={name}
+            name={names}
             colors={colors}
-            setName={setName}
+            setName={setNames}
             setColors={setColors}
             handleChange={handleChange}
             isPaletteFull={isPaletteFull}
