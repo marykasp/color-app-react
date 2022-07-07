@@ -24,6 +24,10 @@ function PaletteFormNav({
     setFormShowing(true);
   }
 
+  function hideForm() {
+    setFormShowing(false);
+  }
+
   return (
     <div>
       <CssBaseline />
@@ -59,6 +63,7 @@ function PaletteFormNav({
           handleChange={handleChange}
           handleSubmit={handleSubmit}
           palettes={palettes}
+          hideForm={hideForm}
         />
       )}
     </div>
