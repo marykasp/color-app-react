@@ -14,7 +14,7 @@ import Button from "@mui/material/Button";
 import { ChromePicker } from "react-color";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import DraggableColorList from "../draggableColorList/DraggableColorList";
-import { arrayMove } from "react-sortable-hoc";
+import { arrayMoveImmutable } from "array-move";
 
 const drawerWidth = 400;
 
@@ -65,14 +65,16 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 function NewPaletteForm(props) {
-  const { palettes, savePalette } = props;
+  const { palettes, savePalette, maxColors } = props;
+
   const [open, setOpen] = useState(false);
   const [currentColor, setCurrentColor] = useState("");
-  const [colors, setColors] = useState([{ color: "blue", name: "blue" }]);
+  const [colors, setColors] = useState(palettes[0].colors);
   const [name, setName] = useState({
     colorName: "",
     paletteName: "",
   });
+  let isPaletteFull = colors.length >= maxColors;
 
   // component did mount
   useEffect(() => {
@@ -107,7 +109,8 @@ function NewPaletteForm(props) {
   }
 
   function onSortEnd({ oldIndex, newIndex }) {
-    setColors(arrayMove(colors, oldIndex, newIndex));
+    // array move returns a new array with the colors in their new index position
+    setColors(arrayMoveImmutable(colors, oldIndex, newIndex));
   }
 
   // add color clicked on to colors array - when click add color button, will add the current color to the colors array - color added is an object with two properties color and name
@@ -140,6 +143,19 @@ function NewPaletteForm(props) {
     // iterate over the colors array of objects and check if color name property is not equal to the colorName argument - if not will be saved to new array thereby removing the color object with that colorName only
     const filteredColors = colors.filter((color) => color.name !== colorName);
     setColors(filteredColors);
+  }
+
+  // set the colors state back to an empty array
+  function clearColors() {
+    setColors([]);
+  }
+
+  function randomColor() {
+    // pick random color from existing palettes - map will return a new array containing the arrays of colors for each palette (nested array) - flatten array to 1D array
+    const allColors = palettes.map((palette) => palette.colors).flat();
+    let rand = Math.floor(Math.random() * allColors.length);
+    const randomColor = allColors[rand];
+    setColors((prevColors) => [...prevColors, randomColor]);
   }
 
   return (
@@ -194,11 +210,16 @@ function NewPaletteForm(props) {
         </DrawerHeader>
         <Divider />
         <Typography variant="h4">Design Your Palette</Typography>
-        <div>
-          <Button variant="contained" color="secondary">
+        <div className="buttons">
+          <Button variant="contained" color="secondary" onClick={clearColors}>
             Clear Palette
           </Button>
-          <Button variant="contained" color="primary">
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={randomColor}
+            disabled={isPaletteFull}
+          >
             Random Color
           </Button>
         </div>
@@ -223,9 +244,12 @@ function NewPaletteForm(props) {
             variant="contained"
             color="primary"
             type="submit"
-            style={{ backgroundColor: currentColor }}
+            disabled={isPaletteFull}
+            style={{
+              backgroundColor: isPaletteFull ? "gray" : currentColor,
+            }}
           >
-            Add Color
+            {isPaletteFull ? "Palette Full" : "Add Color"}
           </Button>
         </ValidatorForm>
       </Drawer>
@@ -241,5 +265,9 @@ function NewPaletteForm(props) {
     </Box>
   );
 }
+
+NewPaletteForm.defaultProps = {
+  maxColors: 20,
+};
 
 export default NewPaletteForm;
