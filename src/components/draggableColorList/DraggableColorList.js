@@ -1,9 +1,5 @@
 import React from "react";
 import DraggableColorBox from "../draggableColorBox/DraggableColorBox";
-<<<<<<< HEAD
-=======
-// import { SortableContainer } from "react-sortable-hoc";
->>>>>>> f2d7abcfeb102d9ca5072518f65255aee52a4546
 
 function DraggableColorList({ colors, deleteColor }) {
   return (
