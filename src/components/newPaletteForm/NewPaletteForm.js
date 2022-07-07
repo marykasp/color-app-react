@@ -9,8 +9,6 @@ import IconButton from "@mui/material/IconButton";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import Button from "@mui/material/Button";
 import DraggableColorList from "../draggableColorList/DraggableColorList";
-// import { arrayMoveImmutable } from "array-move";
-// import { arrayMove } from "react-sortable-hoc";
 import { DRAWER_WIDTH } from "../../assets/constants";
 import { Main, DrawerHeader, useStyles } from "./styles.js";
 
@@ -45,11 +43,12 @@ function NewPaletteForm(props) {
   }
 
   // colors is an array of objects with the hex color and the made up color name
-  function handleSubmit() {
+  function handleSubmit(emoji) {
     const newPalette = {
       paletteName: names.paletteName,
       id: names.paletteName.toLowerCase().replace(/ /g, "-"),
       colors: colors,
+      emoji: emoji,
     };
     savePalette(newPalette);
     // redirect to home page after creating new palette

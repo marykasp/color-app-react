@@ -6,6 +6,8 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+import { Picker } from "emoji-mart";
+import "emoji-mart/css/emoji-mart.css";
 
 function PaletteMetaForm({
   names,
@@ -14,7 +16,7 @@ function PaletteMetaForm({
   handleSubmit,
   hideForm,
 }) {
-  const [open] = useState(true);
+  const [open, setOpen] = useState("form");
 
   // component did mount
   useEffect(() => {
@@ -26,11 +28,23 @@ function PaletteMetaForm({
     });
   });
 
+  function showEmojiPicker() {
+    setOpen("emoji");
+  }
+
+  function savePalette(emoji) {
+    handleSubmit(emoji.native);
+  }
+
   return (
     <div>
-      <Dialog open={open} onClose={hideForm}>
+      <Dialog open={open === "emoji"}>
+        <DialogTitle id="form-dialog-title">Choose a Palette Emoji</DialogTitle>
+        <Picker onSelect={savePalette} title="Pick a Palette Emoji" />
+      </Dialog>
+      <Dialog open={open === "form"} onClose={hideForm}>
         <DialogTitle>Choose a PaletteName</DialogTitle>
-        <ValidatorForm onSubmit={handleSubmit}>
+        <ValidatorForm onSubmit={showEmojiPicker}>
           <DialogContent>
             <DialogContentText>
               Please enter a name for your new beautiful palette. Make sure name
