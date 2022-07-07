@@ -10,7 +10,7 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import Button from "@mui/material/Button";
 import DraggableColorList from "../draggableColorList/DraggableColorList";
 // import { arrayMoveImmutable } from "array-move";
-import { arrayMove } from "react-sortable-hoc";
+// import { arrayMove } from "react-sortable-hoc";
 import { DRAWER_WIDTH } from "../../assets/constants";
 import { Main, DrawerHeader, useStyles } from "./styles.js";
 
@@ -34,10 +34,9 @@ function NewPaletteForm(props) {
     setOpen(false);
   }
 
-  function onSortEnd({ oldIndex, newIndex }) {
-    // array move returns a new array with the colors in their new index position
-    setColors(arrayMove(colors, oldIndex, newIndex));
-  }
+  // function onSortEnd({ oldIndex, newIndex }) {
+  //   setColors(arrayMove(colors, oldIndex, newIndex));
+  // }
 
   // changes the name state with the values from the color and palette name input
   function handleChange(e) {
@@ -145,7 +144,6 @@ function NewPaletteForm(props) {
           colors={colors}
           deleteColor={deleteColor}
           axis="xy"
-          onSortEnd={onSortEnd}
         />
       </Main>
     </Box>
