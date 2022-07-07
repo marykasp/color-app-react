@@ -12,9 +12,10 @@ import DraggableColorList from "../draggableColorList/DraggableColorList";
 // import { arrayMoveImmutable } from "array-move";
 import { arrayMove } from "react-sortable-hoc";
 import { DRAWER_WIDTH } from "../../assets/constants";
-import { Main, DrawerHeader } from "./styles.js";
+import { Main, DrawerHeader, useStyles } from "./styles.js";
 
 function NewPaletteForm(props) {
+  const classes = useStyles();
   const { palettes, savePalette, maxColors } = props;
 
   const [open, setOpen] = useState(false);
@@ -105,28 +106,38 @@ function NewPaletteForm(props) {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <Typography variant="h4">Design Your Palette</Typography>
-        <div className="buttons">
-          <Button variant="contained" color="secondary" onClick={clearColors}>
-            Clear Palette
-          </Button>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={randomColor}
-            disabled={isPaletteFull}
-          >
-            Random Color
-          </Button>
+        <div className={classes.drawerContainer}>
+          <Typography variant="h4" gutterBottom>
+            Design Your Palette
+          </Typography>
+          <div className={classes.buttons}>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={clearColors}
+              classeName={classes.button}
+            >
+              Clear Palette
+            </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={randomColor}
+              disabled={isPaletteFull}
+              className={classes.button}
+            >
+              Random Color
+            </Button>
+          </div>
+          <ColorPickerForm
+            name={name}
+            colors={colors}
+            setName={setName}
+            setColors={setColors}
+            handleChange={handleChange}
+            isPaletteFull={isPaletteFull}
+          />
         </div>
-        <ColorPickerForm
-          name={name}
-          colors={colors}
-          setName={setName}
-          setColors={setColors}
-          handleChange={handleChange}
-          isPaletteFull={isPaletteFull}
-        />
       </Drawer>
       <Main open={open}>
         <DrawerHeader />

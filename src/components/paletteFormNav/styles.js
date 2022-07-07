@@ -1,6 +1,7 @@
 import { styled } from "@mui/material/styles";
 import MuiAppBar from "@mui/material/AppBar";
 import { DRAWER_WIDTH } from "../../assets/constants";
+import { createUseStyles } from "react-jss";
 
 const drawerWidth = DRAWER_WIDTH;
 
@@ -24,11 +25,14 @@ export const AppBar = styled(MuiAppBar, {
   height: "64px",
 }));
 
-export const classes = (theme) => ({
-  root: {
-    display: "flex",
-  },
+export const useStyles = createUseStyles({
   navBtns: {
-    marginRight: "50px",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  flexBox: {
+    display: "flex",
+    alignItems: "center",
   },
 });

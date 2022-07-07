@@ -3,8 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emotion/react": "^11.9.0",
-    "@emotion/styled": "^11.8.1",
+    "@dnd-kit/sortable": "^7.0.1",
     "@mui/icons-material": "^5.8.3",
     "@mui/material": "^5.8.3",
     "@testing-library/jest-dom": "^5.16.4",
@@ -17,6 +16,7 @@
     "react-color": "^2.19.3",
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18.1.0",
+    "react-jss": "^10.9.0",
     "react-material-ui-form-validator": "^3.0.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "5.0.1",

@@ -1,5 +1,6 @@
 import { DRAWER_WIDTH } from "../../assets/constants";
 import { styled } from "@mui/material/styles";
+import { createUseStyles } from "react-jss";
 
 const drawerWidth = DRAWER_WIDTH;
 
@@ -31,3 +32,17 @@ export const DrawerHeader = styled("div")(({ theme }) => ({
   ...theme.mixins.toolbar,
   justifyContent: "flex-end",
 }));
+
+export const useStyles = createUseStyles({
+  drawerContainer: {
+    width: "90%",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  button: {
+    marginLeft: "3px",
+  },
+});

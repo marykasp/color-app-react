@@ -7,7 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Button from "@mui/material/Button";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-import { AppBar, classes } from "./styles";
+import { AppBar, useStyles } from "./styles";
 
 function PaletteFormNav({
   open,
@@ -17,6 +17,7 @@ function PaletteFormNav({
   handleChange,
   handleSubmit,
 }) {
+  const classes = useStyles();
   // component did mount
   useEffect(() => {
     // Form validator for palette name input
@@ -28,7 +29,7 @@ function PaletteFormNav({
   });
 
   return (
-    <div className={classes.root}>
+    <div>
       <CssBaseline />
       <AppBar position="fixed" open={open} color="default">
         <Toolbar>
@@ -46,7 +47,7 @@ function PaletteFormNav({
           </Typography>
         </Toolbar>
         <div className={classes.navBtns}>
-          <ValidatorForm onSubmit={handleSubmit}>
+          <ValidatorForm onSubmit={handleSubmit} className={classes.flexBox}>
             <TextValidator
               value={name.paletteName}
               label="Palette Name"
@@ -54,8 +55,17 @@ function PaletteFormNav({
               onChange={handleChange}
               validators={["required", "isPaletteNameUnique"]}
               errorMessages={["Enter Palette Name", "Name already used"]}
+              sx={{ mr: 2 }}
             />
-            <Button variant="contained" color="primary" type="submit">
+            <Button
+              variant="contained"
+              color="primary"
+              type="submit"
+              sx={{
+                boxShadow: 1,
+                borderRadius: 2,
+              }}
+            >
               Save Palette
             </Button>
           </ValidatorForm>
