@@ -45,7 +45,7 @@
   - [x] Draggable list that displays the draggable color boxes
 - [x] Clear Palette and Random Color Button
 - [ ] New Palette Navigation - extract to new component
-- [ ] Extract color picker component (drawer)
+- [ ] Extract color picker component - (drawer)
 - [ ] Styling color picker and Navigation
 - [ ] Modals and Dialogs
 

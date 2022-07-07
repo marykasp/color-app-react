@@ -12,7 +12,7 @@ function MiniPalette(props) {
     ></div>
   ));
   return (
-    <div className="root" onClick={() => handleClick(id)}>
+    <div className="minipalette" onClick={() => handleClick(id)}>
       <div className="colors">
         {/* add mini color boxes here */}
         {miniColorBoxes}

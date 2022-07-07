@@ -2,7 +2,7 @@ a {
   text-decoration: none;
 }
 
-.root {
+.minipalette {
   background-color: #fff;
   border-radius: 5px;
   padding: 1rem;
@@ -12,7 +12,7 @@ a {
   height: 220px;
 }
 
-.root:hover {
+.minipalette:hover {
   cursor: pointer;
 }
 

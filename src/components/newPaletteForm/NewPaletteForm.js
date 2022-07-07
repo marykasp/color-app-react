@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
+import PaletteFormNav from "../paletteFormNav/PaletteFormNav";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
-import CssBaseline from "@mui/material/CssBaseline";
-import MuiAppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import Button from "@mui/material/Button";
 import { ChromePicker } from "react-color";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import DraggableColorList from "../draggableColorList/DraggableColorList";
 import { arrayMoveImmutable } from "array-move";
+import { DRAWER_WIDTH } from "../../assets/constants";
 
-const drawerWidth = 400;
+const drawerWidth = DRAWER_WIDTH;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
   ({ theme, open }) => ({
@@ -37,23 +35,6 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
     }),
   })
 );
-
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
-  transition: theme.transitions.create(["margin", "width"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: `${drawerWidth}px`,
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -86,13 +67,6 @@ function NewPaletteForm(props) {
 
     ValidatorForm.addValidationRule("isColorUnique", (value) => {
       return colors.every(({ color }) => color !== currentColor);
-    });
-
-    // Form validator for palette name input
-    ValidatorForm.addValidationRule("isPaletteNameUnique", (value) => {
-      return palettes.every(
-        ({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase()
-      );
     });
   });
 
@@ -140,7 +114,7 @@ function NewPaletteForm(props) {
   }
 
   function deleteColor(colorName) {
-    // iterate over the colors array of objects and check if color name property is not equal to the colorName argument - if not will be saved to new array thereby removing the color object with that colorName only
+    // iterate over the colors array of objects and check if color name property is not equal to the colorName argument - if not will be saved to new array thereby removing the color object that matches the argument
     const filteredColors = colors.filter((color) => color.name !== colorName);
     setColors(filteredColors);
   }
@@ -160,36 +134,15 @@ function NewPaletteForm(props) {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      <AppBar position="fixed" open={open} color="default">
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{ mr: 2, ...(open && { display: "none" }) }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Color Picker
-          </Typography>
-          <ValidatorForm onSubmit={handleSubmit}>
-            <TextValidator
-              value={name.paletteName}
-              label="Palette Name"
-              name="paletteName"
-              onChange={handleChange}
-              validators={["required", "isPaletteNameUnique"]}
-              errorMessages={["Enter Palette Name", "Name already used"]}
-            />
-            <Button variant="contained" color="primary" type="submit">
-              Save Palette
-            </Button>
-          </ValidatorForm>
-        </Toolbar>
-      </AppBar>
+      <PaletteFormNav
+        open={open}
+        name={name}
+        palettes={palettes}
+        drawerWidth={drawerWidth}
+        handleDrawerOpen={handleDrawerOpen}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+      />
       <Drawer
         sx={{
           width: drawerWidth,

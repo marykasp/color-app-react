@@ -13,7 +13,7 @@ function App() {
   // console.log(generatePalette(seedColors[0]));
   // returns a palette from the array of state palettes using the id from the Route URL
   function findPalette(id) {
-    // find method returns the element that evaluates as true in the condition
+    // find method returns the first element that evaluates as true in the condition
     return palettes.find((palette) => {
       return palette.id === id;
     });
