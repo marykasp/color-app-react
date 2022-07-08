@@ -47,12 +47,11 @@
 - [x] New Palette Navigation - extract to new component
 - [x] Extract color picker component - (drawer)
 - [x] Styling color picker and Navigation - React JSS
-- [ ] Modals and Dialogs
-
+- [x] Modals and Dialogs
   - [x] Import Material Dialog
   - [x] Style Dialog
   - [x] Closing form and adding emoji
-
+- [ ] Add delete palette option
 - [ ] Convert CSS to styled components or JSS
 - [ ] Find another library to do a draggable box - arrayMove
 

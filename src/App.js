@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
 import Palette from "./components/palette/Palette";
@@ -9,8 +9,10 @@ import seedColors from "./assets/seedColors";
 import { generatePalette } from "./assets/colorHelpers";
 
 function App() {
-  const [palettes, setPalettes] = useState(seedColors);
-  // console.log(generatePalette(seedColors[0]));
+  // check localstorage for colors
+  const savedPalettes = JSON.parse(window.localStorage.getItem("palettes"));
+  const [palettes, setPalettes] = useState(savedPalettes || seedColors);
+
   // returns a palette from the array of state palettes using the id from the Route URL
   function findPalette(id) {
     // find method returns the first element that evaluates as true in the condition
@@ -23,6 +25,11 @@ function App() {
     // save the new created palette into the state (array of original seedColors (ojects))
     setPalettes((prevPalettes) => [...prevPalettes, newPalette]);
   }
+
+  // save to local storage after the state has been saved need to use the useEffect hook (componentDidUpdate) will only update the local storage if the palettes state has been modified (add dependency as second argument)
+  useEffect(() => {
+    window.localStorage.setItem("palettes", JSON.stringify(palettes));
+  }, [palettes]);
 
   return (
     <Switch>
