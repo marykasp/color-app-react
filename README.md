@@ -51,7 +51,10 @@
   - [x] Import Material Dialog
   - [x] Style Dialog
   - [x] Closing form and adding emoji
-- [ ] Add delete palette option
+- [x] Save palettes to local storage
+- [ ] Add delete palette option to minipalettes
+  - [x] add delete icon to mini palette
+  - [ ] Add dialog that pops up when delete
 - [ ] Convert CSS to styled components or JSS
 - [ ] Find another library to do a draggable box - arrayMove
 

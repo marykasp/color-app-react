@@ -1,5 +1,6 @@
 import React from "react";
 import "./minipalette.css";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 function MiniPalette(props) {
   const { id, paletteName, colors, emoji, handleClick } = props;
@@ -13,6 +14,13 @@ function MiniPalette(props) {
   ));
   return (
     <div className="minipalette" onClick={() => handleClick(id)}>
+      <div className="delete">
+        <DeleteIcon
+          className="trashIcon"
+          fontSize="large"
+          style={{ transition: "all 0.3s ease-in" }}
+        />
+      </div>
       <div className="colors">
         {/* add mini color boxes here */}
         {miniColorBoxes}

@@ -10,10 +10,11 @@ a {
   overflow: hidden;
   border: 2px solid rgba(221, 211, 211, 0.74);
   height: 220px;
+  cursor: pointer;
 }
 
-.minipalette:hover {
-  cursor: pointer;
+.minipalette:hover svg.trashIcon {
+  opacity: 1;
 }
 
 .colors {
@@ -47,4 +48,22 @@ h5.title {
   margin: 0 auto;
   position: relative;
   margin-bottom: -6.6px;
+}
+
+/* Delete icon */
+.delete {
+}
+
+.trashIcon {
+  color: #fff;
+  width: 20px;
+  height: 20px;
+  background-color: #eb3d30;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  padding: 5px;
+  border-radius: 2px;
+  z-index: 10;
+  opacity: 0;
 }
