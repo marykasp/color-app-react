@@ -5,6 +5,7 @@
   display: inline-block;
   position: relative;
   cursor: pointer;
+  margin-bottom: -6.4px;
 }
 
 .drag-box-content {

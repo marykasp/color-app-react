@@ -4,6 +4,7 @@ export const useStyles = createUseStyles({
   picker: {
     width: "100% !important",
     marginTop: "2rem",
+    marginLeft: "2rem",
   },
   addColor: {
     width: "100%",

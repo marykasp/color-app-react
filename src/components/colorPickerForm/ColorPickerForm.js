@@ -42,7 +42,7 @@ function ColorPickerForm({
   }
 
   return (
-    <div>
+    <>
       <ChromePicker
         color={currentColor}
         onChangeComplete={(newColor) => updateCurrentColor(newColor)}
@@ -76,11 +76,15 @@ function ColorPickerForm({
             backgroundColor: isPaletteFull ? "gray" : currentColor,
           }}
           className={classes.addColor}
+          sx={{
+            width: "100%",
+            height: "60px",
+          }}
         >
           {isPaletteFull ? "Palette Full" : "Add Color"}
         </Button>
       </ValidatorForm>
-    </div>
+    </>
   );
 }
 

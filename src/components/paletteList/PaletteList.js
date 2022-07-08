@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import MiniPalette from "../minipalette/MiniPalette";
+import PaletteIcon from "@mui/icons-material/Palette";
 import "./palettelist.css";
 
 function PaletteList(props) {
@@ -16,7 +17,11 @@ function PaletteList(props) {
     <div className="Palette-list">
       <div className="container">
         <nav className="nav">
-          <h1>React Color Palettes</h1>
+          <div className="palettelist-logo">
+            <PaletteIcon className="palette-icon" />
+            <h1>React Color Palettes</h1>
+          </div>
+
           <Link to="/palette/new">Create Palette</Link>
         </nav>
         <div className="palettes">
