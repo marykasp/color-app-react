@@ -26,6 +26,12 @@ function App() {
     setPalettes((prevPalettes) => [...prevPalettes, newPalette]);
   }
 
+  function deletePalette(id) {
+    const filteredPalettes = palettes.filter((palette) => palette.id !== id);
+    // there is a change in the palettes state - removing the palette that was clicked on so the useEffect hook should be invoked and the local storage updated
+    setPalettes(filteredPalettes);
+  }
+
   // save to local storage after the state has been saved need to use the useEffect hook (componentDidUpdate) will only update the local storage if the palettes state has been modified (add dependency as second argument)
   useEffect(() => {
     window.localStorage.setItem("palettes", JSON.stringify(palettes));
@@ -48,7 +54,11 @@ function App() {
         exact
         path="/"
         render={(routeProps) => (
-          <PaletteList palettes={palettes} {...routeProps} />
+          <PaletteList
+            palettes={palettes}
+            deletePalette={deletePalette}
+            {...routeProps}
+          />
         )}
       />
       <Route
